@@ -5,6 +5,8 @@ import com.cineplex.moviebooking.model.FilmDAO;
 import com.cineplex.moviebooking.model.Seat;
 import com.cineplex.moviebooking.model.SeatKey;
 import com.cineplex.moviebooking.repository.FilmRepository;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,15 +31,7 @@ public class FilmServiceImpl implements FilmService {
     public ResponseEntity<Film> addFilm(FilmDAO film) {
         Seat seat = new Seat();
         Film newFilm = new Film();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date date = new Date();
-       
-        date = film.getShowDateTime();
-        
-        newFilm.setAvailableSeats(film.getAvailableSeats());
-        newFilm.setDescription(film.getDescription());
-        newFilm.setName(film.getName());
-        newFilm.setShowDateTime(date);
+        BeanUtils.copyProperties(film, newFilm);
         newFilm = repository.save(newFilm);
         for(int i=1; i <= film.getAvailableSeats(); i++){
             SeatKey key = new SeatKey(newFilm.getId(),i);

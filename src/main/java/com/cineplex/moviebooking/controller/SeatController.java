@@ -20,6 +20,11 @@ public class SeatController {
     public List<Seat> showSeatForSpecificShow(@RequestParam long showId) {
         return service.showSeatForSpecificShow(showId);
     }
+    
+    @GetMapping("/availableSeats")
+    public int countAvailableSeats(@RequestParam long showId) {
+        return service.availableSeats(showId);
+    }
     @GetMapping("/specificSeat")
     public ResponseEntity<Seat> getSpecificSeat(@RequestParam int showId,@RequestParam int seatNo) {
         return service.getSpecificSeat(new SeatKey(showId,seatNo));
