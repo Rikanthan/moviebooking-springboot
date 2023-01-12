@@ -11,11 +11,30 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "seat")
-@Getter
-@Setter
-@NoArgsConstructor
+
 public class Seat {
-    @EmbeddedId
+    public Seat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public SeatKey getKey() {
+		return key;
+	}
+
+	public void setKey(SeatKey key) {
+		this.key = key;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	@EmbeddedId
     private SeatKey key;
 
     @Column(name = "status")

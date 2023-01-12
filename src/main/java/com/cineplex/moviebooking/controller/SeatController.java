@@ -5,12 +5,12 @@ import com.cineplex.moviebooking.model.SeatKey;
 import com.cineplex.moviebooking.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin
+@RequestMapping(value = "/api/v1/seat")
+@RestController
 
 public class SeatController {
     @Autowired

@@ -31,11 +31,9 @@ public class FilmServiceImpl implements FilmService {
         Film newFilm = new Film();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date = new Date();
-        try{
-            date = format.parse(film.getShowDateTime());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+       
+        date = film.getShowDateTime();
+        
         newFilm.setAvailableSeats(film.getAvailableSeats());
         newFilm.setDescription(film.getDescription());
         newFilm.setName(film.getName());

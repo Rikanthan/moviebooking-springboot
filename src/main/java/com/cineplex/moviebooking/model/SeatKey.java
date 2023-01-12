@@ -1,20 +1,36 @@
 package com.cineplex.moviebooking.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-@Setter
-@Getter
-@NoArgsConstructor
+
 public class SeatKey implements Serializable {
 
-    public SeatKey(long showId, int seatNo) {
+    public SeatKey() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public long getShowId() {
+		return showId;
+	}
+
+	public void setShowId(long showId) {
+		this.showId = showId;
+	}
+
+	public int getSeatNo() {
+		return seatNo;
+	}
+
+	public void setSeatNo(int seatNo) {
+		this.seatNo = seatNo;
+	}
+
+	public SeatKey(long showId, int seatNo) {
         this.showId = showId;
         this.seatNo = seatNo;
     }
